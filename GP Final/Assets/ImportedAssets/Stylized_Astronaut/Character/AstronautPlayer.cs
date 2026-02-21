@@ -13,6 +13,7 @@ namespace AstronautPlayer
 		public float turnSpeed = 400.0f;
 		private Vector3 moveDirection = Vector3.zero;
 		public float gravity = 20.0f;
+		public float jumpForce = 8.0f;
 
 		void Start () {
 			controller = GetComponent <CharacterController>();
@@ -39,6 +40,10 @@ namespace AstronautPlayer
 
 			if(controller.isGrounded && ySpeed < 0){
 				ySpeed = -2f;
+			}
+
+			if(Input.GetKeyDown(KeyCode.Space) && controller.isGrounded){
+				ySpeed = jumpForce;
 			}
 
 			ySpeed -= gravity * Time.deltaTime;
