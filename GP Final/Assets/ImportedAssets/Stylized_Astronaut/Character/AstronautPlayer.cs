@@ -20,20 +20,31 @@ namespace AstronautPlayer
 		}
 
 		void Update (){
-			if (Input.GetKey ("w")) {
+			float vertical = Input.GetAxisRaw("Vertical");
+			float horizontal = Input.GetAxisRaw("Horizontal");
+
+			if (vertical != 0 || horizontal != 0) {
 				anim.SetInteger ("AnimationPar", 1);
-			}  else {
+			} else {
 				anim.SetInteger ("AnimationPar", 0);
 			}
 
+			float ySpeed = moveDirection.y;
+
 			if(controller.isGrounded){
-				moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
+				Vector3 forward = transform.forward * vertical;
+				Vector3 right = transform.right * horizontal;
+				moveDirection = (forward + right).normalized * speed;
 			}
 
-			float turn = Input.GetAxis("Horizontal");
-			//transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
+			if(controller.isGrounded && ySpeed < 0){
+				ySpeed = -2f;
+			}
+
+			ySpeed -= gravity * Time.deltaTime;
+			moveDirection.y = ySpeed;
+
 			controller.Move(moveDirection * Time.deltaTime);
-			moveDirection.y -= gravity * Time.deltaTime;
 		}
 	}
 }
