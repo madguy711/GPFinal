@@ -14,6 +14,7 @@ namespace AstronautPlayer
 		private Vector3 moveDirection = Vector3.zero;
 		public float gravity = 20.0f;
 		public float jumpForce = 8.0f;
+		private bool hasDoubleJumped = false;
 
 		void Start () {
 			controller = GetComponent <CharacterController>();
@@ -32,18 +33,25 @@ namespace AstronautPlayer
 
 			float ySpeed = moveDirection.y;
 
+			Vector3 forward = transform.forward * vertical;
+			Vector3 right = transform.right * horizontal;
+			moveDirection = (forward + right).normalized * speed;
+
 			if(controller.isGrounded){
-				Vector3 forward = transform.forward * vertical;
-				Vector3 right = transform.right * horizontal;
-				moveDirection = (forward + right).normalized * speed;
+				hasDoubleJumped = false;
 			}
 
 			if(controller.isGrounded && ySpeed < 0){
 				ySpeed = -2f;
 			}
 
-			if(Input.GetKeyDown(KeyCode.Space) && controller.isGrounded){
-				ySpeed = jumpForce;
+			if(Input.GetKeyDown(KeyCode.Space)){
+				if(controller.isGrounded){
+					ySpeed = jumpForce;
+				} else if(!hasDoubleJumped){
+					ySpeed = jumpForce;
+					hasDoubleJumped = true;
+				}
 			}
 
 			ySpeed -= gravity * Time.deltaTime;
