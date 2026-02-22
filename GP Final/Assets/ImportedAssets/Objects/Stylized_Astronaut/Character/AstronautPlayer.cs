@@ -58,6 +58,12 @@ namespace AstronautPlayer
 			moveDirection.y = ySpeed;
 
 			controller.Move(moveDirection * Time.deltaTime);
+
+			//Resets character position if it falls
+			if (transform.position.y < -15)
+			{
+				transform.position = Vector3.zero;
+			}
 		}
 	}
 }
