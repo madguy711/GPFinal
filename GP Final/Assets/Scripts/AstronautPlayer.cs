@@ -27,8 +27,10 @@ namespace AstronautPlayer
 		private float dashCooldownRemaining = 0f;
 		private Vector3 dashDirection = Vector3.zero;
 		public ParticleSystem speedLines;
+
 		public AudioSource dashSFX;
 		public AudioSource jumpSFX;
+		
 
 		void Start () {
 			controller = GetComponent <CharacterController>();

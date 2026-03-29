@@ -48,4 +48,14 @@ public class LevelManager : MonoBehaviour
             timerText.color = Color.red;
         }
     }
+
+    public void BeatLevel()
+    {
+        Debug.Log("levelTime at completion: " + levelTime);
+        timerRunning = false;
+        PlayerPrefs.SetFloat("TimeLeft", levelTime);
+        PlayerPrefs.SetInt("LastLevel", SceneManager.GetActiveScene().buildIndex);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("LevelComplete");
+    }
 }
