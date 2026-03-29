@@ -8,11 +8,13 @@ public class LevelManager : MonoBehaviour
     public float levelTime = 120f;
     public TextMeshProUGUI timerText;
     private bool timerRunning;
+    public AudioSource BGM;
 
     void Start()
     {
         timerRunning = true;
         timerText.color = Color.white;
+        BGM.Play();
     }
     
     void Update()
