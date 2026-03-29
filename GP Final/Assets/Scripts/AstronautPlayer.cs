@@ -26,6 +26,8 @@ namespace AstronautPlayer
 		private float dashCooldownRemaining = 0f;
 		private Vector3 dashDirection = Vector3.zero;
 		public ParticleSystem speedLines;
+		public AudioSource dashSFX;
+		public AudioSource jumpSFX;
 
 		void Start () {
 			controller = GetComponent <CharacterController>();
@@ -69,6 +71,7 @@ namespace AstronautPlayer
 				isDashing = true;
 				dashTimeRemaining = dashDuration;
 				dashCooldownRemaining = dashCooldown;
+				dashSFX.Play();
 				speedLines.Play();
 			}
 
@@ -104,6 +107,7 @@ namespace AstronautPlayer
 						ySpeed = jumpForce;
 					} else if(!hasDoubleJumped){
 						ySpeed = jumpForce;
+						jumpSFX.Play();
 						hasDoubleJumped = true;
 					}
 				}
