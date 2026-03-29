@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AstronautPlayer
 {
@@ -121,7 +122,7 @@ namespace AstronautPlayer
 			// Resets character position if it falls
 			if (transform.position.y < -15)
 			{
-				transform.position = Vector3.zero;
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			}
 		}
 	}
