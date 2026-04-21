@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace AstronautPlayer
 {
@@ -28,6 +29,7 @@ namespace AstronautPlayer
 		private float dashCooldownRemaining = 0f;
 		private Vector3 dashDirection = Vector3.zero;
 		public ParticleSystem speedLines;
+		public Slider dashCooldownSlider;
 
 		public AudioSource dashSFX;
 		public AudioSource jumpSFX;
@@ -42,6 +44,12 @@ namespace AstronautPlayer
 			// Dash cooldown
 			if (dashCooldownRemaining > 0f)
 				dashCooldownRemaining -= Time.deltaTime;
+			
+			// Update the cooldown slider 
+			if (dashCooldownSlider)
+			{
+				dashCooldownSlider.value = 1f - (dashCooldownRemaining / dashCooldown);
+			}
 
 			float vertical = Input.GetAxisRaw("Vertical");
 			float horizontal = Input.GetAxisRaw("Horizontal");
