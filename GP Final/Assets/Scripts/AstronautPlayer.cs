@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -124,8 +125,23 @@ namespace AstronautPlayer
 			// Resets character position if it falls
 			if (transform.position.y < -15)
 			{
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+				RestartLevel();
 			}
+		}
+
+		// Restart the level if the player gets shot
+		void OnCollisionEnter(Collision collision)
+		{
+			if (collision.transform.CompareTag("EnemyBullet"))
+			{
+				RestartLevel();
+			}
+		}
+
+		// Reload the current scene to restart the level
+		void RestartLevel()
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 	}
 }
