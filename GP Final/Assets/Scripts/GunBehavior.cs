@@ -6,6 +6,8 @@ public class GunBehavior : MonoBehaviour
     public Transform firePoint;
     public Animator gunAnimator;
     public ParticleSystem muzzleFlash;
+    public AudioSource gunSFX;
+    public AudioSource spinSFX;
     public float timeBetweenShots = 1f;
     
 
@@ -37,6 +39,12 @@ public class GunBehavior : MonoBehaviour
         if (gunAnimator)
         {
             gunAnimator.SetTrigger("Shoot");
+            spinSFX.PlayDelayed(0.25f);
+        }
+
+        if (gunSFX)
+        {
+            gunSFX.Play();
         }
         
     }
