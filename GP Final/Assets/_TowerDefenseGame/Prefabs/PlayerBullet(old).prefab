@@ -9589,7 +9589,7 @@ GameObject:
   - component: {fileID: 7283269815690230602}
   - component: {fileID: 164991849797622967}
   m_Layer: 7
-  m_Name: PlayerBullet
+  m_Name: PlayerBullet(old)
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
