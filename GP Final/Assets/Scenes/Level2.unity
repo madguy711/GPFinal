@@ -1985,6 +1985,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3832703582600972128, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1800866662}
+    - targetCorrespondingSourceObject: {fileID: 3832703582600972128, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1800866663}
   m_SourcePrefab: {fileID: 100100000, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
 --- !u!4 &584605937 stripped
 Transform:
@@ -29145,8 +29148,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunBehavior
   projectilePrefab: {fileID: 2716375402462805772, guid: a87e28ac1e61748de8d6cc26fcb35403, type: 3}
   firePoint: {fileID: 1160733887}
+  gunAnimator: {fileID: 1800866663}
   muzzleFlash: {fileID: 1518910181}
-  timeBetweenShots: 2
+  timeBetweenShots: 1.5
+--- !u!95 &1800866663
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800866661}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49b4a3b8f75ae4c5681afe5cba20bdd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1803412874
 PrefabInstance:
   m_ObjectHideFlags: 0

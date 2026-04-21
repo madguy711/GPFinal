@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class GunBehavior : MonoBehaviour
 {
-    [Header("Shooting Settings")]
     public GameObject projectilePrefab;
     public Transform firePoint;
+    public Animator gunAnimator;
     public ParticleSystem muzzleFlash;
     public float timeBetweenShots = 1f;
+    
 
     private float fireCooldown = 0f;
     
@@ -31,6 +32,11 @@ public class GunBehavior : MonoBehaviour
         if (muzzleFlash)
         {
             muzzleFlash.Play();
+        }
+
+        if (gunAnimator)
+        {
+            gunAnimator.SetTrigger("Shoot");
         }
         
     }
