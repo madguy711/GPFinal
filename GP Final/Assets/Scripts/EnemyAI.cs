@@ -11,7 +11,11 @@ public class EnemyAI : MonoBehaviour
     [Header("Navigation Settings")]
     // public Transform turret;
     public float rotationSpeed = 30f;
-    public float detectionRange = 10f;
+    public float detectionRange = 10f;      // The detection range for the player
+    public float bobHeight = 0.3f;          // how high/low it bobs
+    public float bobSpeed = 2f;             // how fast it bobs
+    public float scanSpeed = 45f;           // degrees per second for scanning
+    public float scanAngle = 60f;           // max angle to turn left or right
 
     [Header("Attack Settings")]
     public GameObject projectilePrefab;
@@ -24,12 +28,19 @@ public class EnemyAI : MonoBehaviour
     float fireCooldown = 0;
     Transform attackTarget;
     Quaternion initialTurretRotation;
+
+    // Navigation state tracking
+    float centerHeight;                // The "center" height to bob around
+    float bobTimer;             // Drives the sine wave for bobbing
+    float lookTimer;            // Drives the looking rotation
+    float baseYaw;           // The yaw the drone scans around
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    
+        centerHeight = transform.position.y;
+        baseYaw = transform.eulerAngles.y;
     }
 
     // Update is called once per frame
@@ -51,6 +62,17 @@ public class EnemyAI : MonoBehaviour
 
     void Navigate()
     {
+        // bob up and down
+        bobTimer += Time.deltaTime * bobSpeed;
+        Vector3 pos = transform.position;
+        pos.y = centerHeight + Mathf.Sin(bobTimer) * bobHeight;
+        transform.position = pos;
+
+        // look left and right
+        lookTimer += Time.deltaTime;
+        float yawOffset = Mathf.Sin(lookTimer * Mathf.Deg2Rad * scanSpeed) * scanAngle;
+        transform.rotation = Quaternion.Euler(0f, baseYaw + yawOffset, 0f);
+
         FindPlayer();
     }
 
@@ -61,6 +83,11 @@ public class EnemyAI : MonoBehaviour
         {
             attackTarget = null;
             currentState = EnemyState.Navigate;
+            // Make the bobbing and looking resume normally from wherever it is now
+            centerHeight = transform.position.y;
+            baseYaw = transform.eulerAngles.y;
+            bobTimer = 0f;
+            lookTimer = 0f;
             return;
         }
 
