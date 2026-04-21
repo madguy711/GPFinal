@@ -129,12 +129,12 @@ public class EnemyAI : MonoBehaviour
         }
 
         // Ignore collisions with every collider on the enemy (root + all children)
-        Collider bulletCollider = bullet.GetComponent<Collider>();
+        /*Collider bulletCollider = bullet.GetComponent<Collider>();
         Collider[] enemyColliders = GetComponentsInChildren<Collider>();
         foreach (Collider enemyCol in enemyColliders)
         {
             Physics.IgnoreCollision(bulletCollider, enemyCol);
-        }
+        }*/
     }
 
     bool HasLineOfSight(Transform target)
