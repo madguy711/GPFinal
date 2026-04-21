@@ -118,14 +118,23 @@ public class EnemyAI : MonoBehaviour
 
     void Shoot()
     {
-        var bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        Vector3 aimDirection = attackTarget.position - firePoint.position;
+        Quaternion bulletRotation = Quaternion.LookRotation(aimDirection);
+        var bullet = Instantiate(projectilePrefab, firePoint.position, bulletRotation);
         BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
 
         if (bulletBehavior)
         {
             bulletBehavior.SetTarget(attackTarget);
         }
-        // Physics.IgnoreCollision(bullet.GetComponent<Collider>(), GetComponent<Collider>());
+
+        // Ignore collisions with every collider on the enemy (root + all children)
+        Collider bulletCollider = bullet.GetComponent<Collider>();
+        Collider[] enemyColliders = GetComponentsInChildren<Collider>();
+        foreach (Collider enemyCol in enemyColliders)
+        {
+            Physics.IgnoreCollision(bulletCollider, enemyCol);
+        }
     }
 
     bool HasLineOfSight(Transform target)

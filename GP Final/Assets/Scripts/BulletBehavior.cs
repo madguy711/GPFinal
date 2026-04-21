@@ -20,19 +20,7 @@ public class BulletBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target == null)
-        {
-            return;
-        }
-        
-        // direction
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        // smooth rotation
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
-
-        // move bullet forward
+        // shoot at the players current location
         rb.linearVelocity = transform.forward * speed;
     }
 
