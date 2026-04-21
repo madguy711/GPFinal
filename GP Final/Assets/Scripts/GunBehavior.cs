@@ -26,5 +26,7 @@ public class GunBehavior : MonoBehaviour
         Camera cam = Camera.main;
         Quaternion bulletRotation = Quaternion.LookRotation(cam.transform.forward);
         var bullet = Instantiate(projectilePrefab, firePoint.position, bulletRotation);
+
+        
     }
 }
