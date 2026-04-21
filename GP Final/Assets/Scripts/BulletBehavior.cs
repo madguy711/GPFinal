@@ -38,5 +38,7 @@ public class BulletBehavior : MonoBehaviour
             var pos = collision.contacts[0].point;
             Instantiate(bulletHitPrefab, pos, Quaternion.identity);
         }
+        
+        Destroy(gameObject);
     }
 }

@@ -78,6 +78,7 @@ public class EnemyAI : MonoBehaviour
         fireCooldown -= Time.deltaTime;
     }
 
+    // explode when dying 
     void Die()
     {
         if (destroyPrefab)
@@ -87,10 +88,11 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // fi
     void FindPlayer()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRange);
-        Transform nearestTower = null;
+        Transform nearestPlayer = null;
         float shortestDistance = Mathf.Infinity;
 
         foreach (Collider collider in colliders)
@@ -102,20 +104,21 @@ public class EnemyAI : MonoBehaviour
                 if (distanceToEnemy < shortestDistance)
                 {
                     shortestDistance = distanceToEnemy;
-                    nearestTower = collider.transform;
+                    nearestPlayer = collider.transform;
                 }
             }
         }
 
-        if (nearestTower)
+        if (nearestPlayer)
         {
-            attackTarget = nearestTower;
+            attackTarget = nearestPlayer;
             Debug.Log("Player detected: " + attackTarget.name);
             currentState = EnemyState.Attack;
             return;
         }
     }
 
+    // shoot at the player's current location, bullets do not track the player
     void Shoot()
     {
         Vector3 aimDirection = attackTarget.position - firePoint.position;
@@ -128,15 +131,10 @@ public class EnemyAI : MonoBehaviour
             bulletBehavior.SetTarget(attackTarget);
         }
 
-        // Ignore collisions with every collider on the enemy (root + all children)
-        /*Collider bulletCollider = bullet.GetComponent<Collider>();
-        Collider[] enemyColliders = GetComponentsInChildren<Collider>();
-        foreach (Collider enemyCol in enemyColliders)
-        {
-            Physics.IgnoreCollision(bulletCollider, enemyCol);
-        }*/
     }
 
+    // the game won't really have a case where you're behind cover but nice to have
+    // Checks to see if the drone has a line of sight on the player
     bool HasLineOfSight(Transform target)
     {
         RaycastHit hit;
@@ -151,19 +149,21 @@ public class EnemyAI : MonoBehaviour
         }
         
         return false;
-}
+    }
 
+    // just to show the range of the drone
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
+    // Dies when shot by a bullet 
     void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.CompareTag("Bullet"))
         {
-            
+            Die();
         }
     }
 }
