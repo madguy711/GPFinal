@@ -14399,10 +14399,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 284169030cdb44ac5aeed3136719a521, type: 3}
+  m_Resource: {fileID: 8300000, guid: f7f2b958b23574551b561f7e871a8306, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.881
+  m_Pitch: 0.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -14563,7 +14563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c0b5d82f1345b688899b8a0906f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
-  speed: 4
+  speed: 11
   rotationSpeed: 5
   lifetime: 5
   bulletHitPrefab: {fileID: 0}
@@ -33834,7 +33834,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2ce4a9f2ac6df4847a411217624e797e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
