@@ -5519,14 +5519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienFighter
       objectReference: {fileID: 0}
-    - target: {fileID: 1458391615630120, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1458391615630120, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 4154595508381948, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5520987
@@ -5566,22 +5558,6 @@ PrefabInstance:
     - target: {fileID: 4154595508381948, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1249324445949643226, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3127710916089776640, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: destroyPrefab
-      value: 
-      objectReference: {fileID: 1082826025734650, guid: 42a3690e5d4a841ad958c0e3b9b7b19e, type: 3}
-    - target: {fileID: 8160793408071701144, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.243
-      objectReference: {fileID: 0}
-    - target: {fileID: 8160793408071701144, guid: 6d18ca3ac0d2ecd4aa99a8099af486bb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.524
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
