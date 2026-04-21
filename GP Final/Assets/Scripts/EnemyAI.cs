@@ -163,7 +163,7 @@ public class EnemyAI : MonoBehaviour
     {
         if(collision.transform.CompareTag("Bullet"))
         {
-            
+            Die();
         }
     }
 }
