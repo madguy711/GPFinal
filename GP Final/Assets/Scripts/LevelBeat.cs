@@ -8,12 +8,14 @@ public class LevelBeat : MonoBehaviour
 
     void Start()
     {
+        // enable the cursor in the menu
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
         float timeLeft = PlayerPrefs.GetFloat("TimeLeft", 0f);
         Debug.Log("Time left: " + timeLeft);
 
+        // award stars out of 5 based on time left 
         for (int i = 0; i < stars.Length; i++)
         {
             Debug.Log("Star " + i + " threshold: " + starThresholds[i] + " | showing: " + (timeLeft >= starThresholds[i]));
