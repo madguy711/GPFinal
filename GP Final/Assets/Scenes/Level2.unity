@@ -9954,9 +9954,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e571b3fcd25046a790d8f4ee33b7131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunBehavior
-  projectilePrefab: {fileID: 4132166219533410251, guid: 2a0bf8ace6ae44b29aa626e3e4cd1b4a, type: 3}
+  projectilePrefab: {fileID: 2716375402462805772, guid: a87e28ac1e61748de8d6cc26fcb35403, type: 3}
   firePoint: {fileID: 1160733887}
-  timeBetweenShots: 1
+  timeBetweenShots: 2
 --- !u!1001 &1803412874
 PrefabInstance:
   m_ObjectHideFlags: 0
