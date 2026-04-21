@@ -6,6 +6,7 @@ public class AsteroidSpawnerController : MonoBehaviour
     public GameObject[] asteroidPrefabs;
     public float spawnInterval = 2f;
     public int spawnAmount = 1;
+    public int spawnRadius = 8;
     void Start()
     {
         StartCoroutine(SpawnAsteroids(spawnInterval));
@@ -18,7 +19,7 @@ public class AsteroidSpawnerController : MonoBehaviour
     void SpawnAsteroids()
     {
         int asteroidIndex = Random.Range(0, asteroidPrefabs.Length);
-        var positionOffset = Random.insideUnitSphere*5;
+        var positionOffset = Random.insideUnitSphere*spawnRadius;
         Instantiate(asteroidPrefabs[asteroidIndex], transform.position+positionOffset, transform.rotation);
     }
 
