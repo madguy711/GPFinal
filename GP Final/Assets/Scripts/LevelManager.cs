@@ -55,7 +55,12 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("levelTime at completion: " + levelTime);
         timerRunning = false;
-        PlayerPrefs.SetFloat("TimeLeft", levelTime);
+        if(SceneManager.GetActiveScene().name == "Level1"){
+            PlayerPrefs.SetFloat("TimeLeft1", levelTime);
+        }else if (SceneManager.GetActiveScene().name == "Level2")
+        {
+            PlayerPrefs.SetFloat("TimeLeft2", levelTime);
+        }
         PlayerPrefs.SetInt("LastLevel", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.Save();
         SceneManager.LoadScene("LevelComplete");

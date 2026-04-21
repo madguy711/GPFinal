@@ -12,7 +12,7 @@ public class LevelBeat : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
-        float timeLeft = PlayerPrefs.GetFloat("TimeLeft", 0f);
+        float timeLeft = PlayerPrefs.GetFloat("TimeLeft1", 0f);
         Debug.Log("Time left: " + timeLeft);
 
         // award stars out of 5 based on time left 
@@ -38,5 +38,10 @@ public class LevelBeat : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(PlayerPrefs.GetInt("LastLevel", 0) + 1);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

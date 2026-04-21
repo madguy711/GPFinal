@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public float mouseSensitivity = 50f;
     Transform playerBody;
     float pitch;
     float pitchMin = -90f;
     float pitchMax = 90f;
+    float mouseSensitivity;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        mouseSensitivity = PlayerPrefs.GetFloat("SensitivitySetting",0.5f)*50+25;
         playerBody = transform.parent.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
