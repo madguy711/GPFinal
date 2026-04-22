@@ -156,10 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   currentState: 0
   rotationSpeed: 30
-  detectionRange: 10
+  detectionRange: 16
+  moveSpeed: 5
   bobHeight: 0.15
   bobSpeed: 1.3
-  scanSpeed: 15
+  scanSpeed: 40
   scanAngle: 60
   projectilePrefab: {fileID: 4132166219533410251, guid: e6d531898a45e48ad93809633aade5ae, type: 3}
   firePoint: {fileID: 8160793408071701144}

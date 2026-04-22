@@ -33,6 +33,9 @@ namespace AstronautPlayer
 
 		public AudioSource dashSFX;
 		public AudioSource jumpSFX;
+		public Image doubleJumpIndicator;          
+		public Color doubleJumpAvailableColor = Color.green;
+		public Color doubleJumpUsedColor = Color.white;
 		
 
 		void Start () {
@@ -49,6 +52,19 @@ namespace AstronautPlayer
 			if (dashCooldownSlider)
 			{
 				dashCooldownSlider.value = 1f - (dashCooldownRemaining / dashCooldown);
+			}
+
+			// Update the double jump indicator
+			if (doubleJumpIndicator)
+			{
+				if (hasDoubleJumped)
+				{
+					doubleJumpIndicator.color = doubleJumpUsedColor;
+				}
+				else
+				{
+					doubleJumpIndicator.color = doubleJumpAvailableColor;
+				}
 			}
 
 			float vertical = Input.GetAxisRaw("Vertical");
