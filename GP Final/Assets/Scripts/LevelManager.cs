@@ -63,6 +63,12 @@ public class LevelManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("LastLevel", SceneManager.GetActiveScene().buildIndex);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("LevelComplete");
+        if (SceneManager.GetActiveScene().name != "Level2"){
+            SceneManager.LoadScene("LevelComplete");
+        }
+        else
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }

@@ -11,7 +11,7 @@ public class MouseLook : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mouseSensitivity = PlayerPrefs.GetFloat("SensitivitySetting",0.5f)*50+25;
+        mouseSensitivity = PlayerPrefs.GetFloat("SensitivitySetting",0.5f)*400+100;
         playerBody = transform.parent.transform;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

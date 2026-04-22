@@ -23,4 +23,8 @@ public class AttackAsteroidBehavior : MonoBehaviour
         rb.linearVelocity = transform.forward*speed;
         
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+    }
 }

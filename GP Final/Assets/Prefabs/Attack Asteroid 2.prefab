@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a51d65c90ccc57f4d8a4f94df19f1c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackAsteroidBehavior
-  speed: 15
+  speed: 10
   lifetime: 15
   rotationSpeed: 5
   player: {fileID: 0}
