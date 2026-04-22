@@ -352,7 +352,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1669784977}
+      - m_Target: {fileID: 1714932217}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -5007,7 +5007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2095000e8943e545ab3e911b5220b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  slider: {fileID: 0}
 --- !u!114 &1878478515
 MonoBehaviour:
   m_ObjectHideFlags: 0
