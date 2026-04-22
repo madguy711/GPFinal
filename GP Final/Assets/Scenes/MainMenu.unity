@@ -3522,7 +3522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Title
+  m_text: 'Space Race
 
 '
   m_isRightToLeft: 0
