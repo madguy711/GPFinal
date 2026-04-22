@@ -18,14 +18,11 @@ public class SpaceshipBehavior : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if (winText)
-            {
-                winText.SetActive(true);
-            }
+            FindObjectOfType<LevelManager>().BeatLevel();
         }
     }
 }
