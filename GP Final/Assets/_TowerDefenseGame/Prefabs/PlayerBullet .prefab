@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c0b5d82f1345b688899b8a0906f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
-  speed: 60
+  speed: 100
   rotationSpeed: 5
   lifetime: 2
   bulletHitPrefab: {fileID: 0}
