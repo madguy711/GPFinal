@@ -17,6 +17,10 @@ namespace AstronautPlayer
 		private Vector3 moveDirection = Vector3.zero;
 		public float gravity = 20.0f;
 		public float jumpForce = 8.0f;
+		
+		[Header("Coyote Time")]
+		public float coyoteTime = 0.15f;        // small grace period after not touching the ground where a jump still counts as grounded
+		private float coyoteTimeRemaining = 0f;
 
 		private bool hasDoubleJumped = false;
 
@@ -123,6 +127,11 @@ namespace AstronautPlayer
 				if(controller.isGrounded)
 				{
 					hasDoubleJumped = false;
+					coyoteTimeRemaining = coyoteTime;   // refresh the grace timer when grounded again
+				}
+				else
+				{
+					coyoteTimeRemaining -= Time.deltaTime;
 				}
 
 				if(controller.isGrounded && ySpeed < 0)
@@ -131,9 +140,13 @@ namespace AstronautPlayer
 				}
 
 				if(Input.GetKeyDown(KeyCode.Space)){
-					if(controller.isGrounded){
+					if(controller.isGrounded || coyoteTimeRemaining > 0f){
+						// Ground jump (or coyote-time jump just after walking off)
 						ySpeed = jumpForce;
-					} else if(!hasDoubleJumped){
+						coyoteTimeRemaining = 0f;   // Consume the grace so it can't be reused
+					} 
+					else if(!hasDoubleJumped)
+					{
 						ySpeed = jumpForce;
 						jumpSFX.Play();
 						hasDoubleJumped = true;
