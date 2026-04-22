@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     private bool timerRunning;
     public AudioSource BGM;
+    public GameObject pauseMenu;
+    bool isGamePaused = false;
 
     void Start()
     {
@@ -20,6 +22,18 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
        LevelTimer();
+       if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!isGamePaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
+        }
+        
     }
 
     void RestartLevel()
@@ -71,4 +85,35 @@ public class LevelManager : MonoBehaviour
             SceneManager.LoadScene("MainMenu");
         }
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public void MainMenu()
+    {
+        ResumeGame();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void PauseGame()
+    {
+        isGamePaused = true;
+        timerRunning = false;
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        pauseMenu.SetActive(true);
+    }
+    public void ResumeGame()
+    {
+        isGamePaused = false;
+        timerRunning = true;
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        pauseMenu.SetActive(false);
+    }
+
+
 }
